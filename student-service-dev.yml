@@ -62,7 +62,7 @@ eureka:
 resilience4j:
   circuitbreaker:
     instances:
-      studentEmailService:
+      ExaminationService:
         registerHealthIndicator: true
         slidingWindowSize: 5
         minimumNumberOfCalls: 5
@@ -73,14 +73,15 @@ resilience4j:
 
   retry:
     instances:
-      studentEmailService:
+      ExaminationService:
         maxAttempts: 3
         waitDuration: 2s
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
         retryExceptions:
           - java.io.IOException
-          - org.springframework.mail.MailException
+          - org.springframework.web.client.ResourceAccessException
+          - org.springframework.web.client.HttpServerErrorException
 
 message:
   welcome: Welcome to Student Service Microservice!
