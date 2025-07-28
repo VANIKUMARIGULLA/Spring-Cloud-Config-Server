@@ -6,5 +6,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/VANIKUMARIGULLA/
+          uri: https://github.com/VANIKUMARIGULLA/Spring-Cloud-Config-Server
           default-label: main
