@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: ExaminationService
+    name: examination-service
 
   data:
     mongodb:
