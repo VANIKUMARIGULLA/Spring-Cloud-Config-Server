@@ -26,3 +26,9 @@ logging:
   level:
     root: INFO
     com.example: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
