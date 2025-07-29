@@ -6,7 +6,6 @@ spring:
     url: jdbc:mysql://localhost:3306/studentdata
     username: root
     password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver  # Optional in Spring Boot 2.6+, auto-detected
 
   mail:
     host: smtp.gmail.com
