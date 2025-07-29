@@ -44,20 +44,4 @@ logging:
   level:
     com.example.examinationcell: DEBUG
 
-resilience4j:
-  circuitbreaker:
-    instances:
-      studentService:
-        registerHealthIndicator: true
-        slidingWindowSize: 3
-        minimumNumberOfCalls: 3
-        failureRateThreshold: 50
-        waitDurationInOpenState: 5s
-
-  retry:
-    instances:
-      studentService:
-        max-attempts: 2
-        wait-duration: 1s
-
 message: "Welcome from Config server to ExaminationService"
