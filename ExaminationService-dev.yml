@@ -5,6 +5,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
+spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/examdb
@@ -41,3 +42,4 @@ management:
   endpoint:
     health:
       show-details: always
+
