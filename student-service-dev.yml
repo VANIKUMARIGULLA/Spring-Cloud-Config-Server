@@ -1,9 +1,12 @@
 server:
   port: 8081
-  
+
 spring:
+  application:
+    name: student-service
+
   datasource:
-    url: jdbc:mysql://localhost:3306/studentdb  # ✅ Must be a real DB name
+    url: jdbc:mysql://localhost:3306/studentdb
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -12,73 +15,16 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: vanikumari.gulla@gmail.com
-    password: sbdroggzjfompwkp
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
-    mode: HTML
-    cache: false
 
   kafka:
     bootstrap-servers: localhost:9092
-    consumer:
-      group-id: student-group
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
   instance:
     prefer-ip-address: true
-  
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      ExaminationService:
-        registerHealthIndicator: true
-        slidingWindowSize: 5
-        minimumNumberOfCalls: 5
-        failureRateThreshold: 50
-        waitDurationInOpenState: 10s
-        permittedNumberOfCallsInHalfOpenState: 3
-        automaticTransitionFromOpenToHalfOpenEnabled: true
-
-  retry:
-    instances:
-      ExaminationService:
-        maxAttempts: 3
-        waitDuration: 2s
-        enableExponentialBackoff: true
-        exponentialBackoffMultiplier: 2
-        retryExceptions:
-          - java.io.IOException
-          - org.springframework.web.client.ResourceAccessException
-          - org.springframework.web.client.HttpServerErrorException
-
-message:
-  welcome: Welcome to Student Service Microservice!
 
 management:
   endpoints:
@@ -89,4 +35,3 @@ management:
 logging:
   level:
     root: info
-    org.springframework.web: debug
