@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: StudentService
+    name: student-Service
 
   datasource:
     url: jdbc:mysql://localhost:3306/studentdb  # ✅ Must be a real DB name
