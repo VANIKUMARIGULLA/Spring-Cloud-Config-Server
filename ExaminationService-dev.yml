@@ -1,9 +1,10 @@
-# 📄 File: ExaminationService-dev.yml (inside your Git repo)
-
 server:
   port: 8082
-
+  
 spring:
+  main:
+    allow-bean-definition-overriding: true
+
   data:
     mongodb:
       uri: mongodb://localhost:27017/examdb
@@ -26,13 +27,11 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
   instance:
-    prefer-ip-address: true     # Optional: IP will be shown in Eureka
-    lease-renewal-interval-in-seconds: 30
-    lease-expiration-duration-in-seconds: 90
+    prefer-ip-address: true
 
 logging:
   level:
-    com.example.ExaminationService: DEBUG
+    com.example.examinationcell: DEBUG
 
 management:
   endpoints:
