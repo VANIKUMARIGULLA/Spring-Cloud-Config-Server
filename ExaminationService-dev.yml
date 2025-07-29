@@ -6,7 +6,7 @@ server:
 
 spring:
   application:
-    name: examination-service # <--- Ensure this is present and matches the one in bootstrap.yml
+    name: ExaminationService # <--- Ensure this is present and matches the one in bootstrap.yml
   data:
     mongodb:
       uri: mongodb://localhost:27017/examdb
