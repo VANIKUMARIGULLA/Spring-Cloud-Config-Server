@@ -2,6 +2,9 @@ server:
   port: 8082
 
 spring:
+  application:
+    name: ExaminationService
+
   main:
     allow-bean-definition-overriding: true
 
@@ -26,10 +29,11 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+
   instance:
     prefer-ip-address: true
-    ip-address: 127.0.0.1
-    instance-id: ExaminationService:${server.port}
+    instance-id: ${spring.application.name}:${server.port}
+    hostname: localhost
 
 logging:
   level:
