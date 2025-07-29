@@ -1,7 +1,9 @@
 server:
   port: 8082
-  
+
 spring:
+  application:
+    name: ExaminationService  # ✅ REQUIRED to avoid "UNKNOWN"
   main:
     allow-bean-definition-overriding: true
 
@@ -27,7 +29,11 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
   instance:
-    prefer-ip-address: true
+    hostname: VANIKUMARI
+    prefer-ip-address: false
+    instance-id: VANIKUMARI:${server.port}
+    metadata-map:
+      instanceId: VANIKUMARI:${server.port}
 
 logging:
   level:
