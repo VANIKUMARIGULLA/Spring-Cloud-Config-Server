@@ -1,9 +1,11 @@
+debug: true
+
 server:
   port: 8081
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/studentdata
+    url: jdbc:mysql://localhost:3306/studentdb
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -19,8 +21,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: vanikumari.gulla@gmail.com
-    password: sbdroggzjfompwkp
+    username: your-email@gmail.com
+    password: your-app-password
     properties:
       mail:
         smtp:
@@ -32,27 +34,29 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
     mode: HTML
-    encoding: UTF-8
     cache: false
 
   kafka:
     bootstrap-servers: localhost:9092
+    consumer:
+      group-id: student-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    consumer:
-      group-id: student-group
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    listener:
-      missing-topics-fatal: false
 
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: VANIKUMARI
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 resilience4j:
   circuitbreaker:
@@ -86,3 +90,8 @@ management:
     web:
       exposure:
         include: "*"
+
+logging:
+  level:
+    root: info
+    org.springframework.web: debug
