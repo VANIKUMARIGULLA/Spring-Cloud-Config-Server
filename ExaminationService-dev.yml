@@ -29,6 +29,7 @@ eureka:
 
 logging:
   level:
+    org.springframework.boot.context.config: DEBUG
     root: INFO
     com.example: DEBUG
 
